@@ -44,3 +44,55 @@ class Solution:
             dp[i] = max(dp[i-1], i +nums[i])
         return True
 ```
+
+***
+***
+&nbsp;
+## **Hard Questions**
+&nbsp;
+
+***
+
+***
+#### Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.
+
+![Version](https://img.shields.io/badge/Array-white)  
+```python
+import numpy as np
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        
+        # return self.helper(height, 0, 0)
+        return self.helper2(height)
+
+    def helper(self, height, max_heightL, max_heightR):
+        # Complexity is O(n log(n))
+        if len(height) == 0:
+            return 0
+        max_val = max(height)
+        if max_val <= min(max_heightL, max_heightR):
+            return len(height) * min(max_heightL, max_heightR) - sum(height)
+        k = np.argmax(height)
+        return self.helper(height[:k], max_heightL, max_val) + self.helper(height[k+1:], max_val, max_heightR) 
+
+    def helper2(self, height):
+        # Complexity is O (n)
+        n = len(height)
+        left_max = float('-inf')
+        right_max = float('-inf')
+        left = 0
+        right = n- 1
+        output = 0
+
+        while left <= right:
+            if height[left] <= height[right]:
+                left_max = max(left_max, height[left])
+                output += left_max - height[left]
+                left +=1
+            else:
+                right_max = max(right_max, height[right])
+                output += right_max - height[right]
+                right -= 1
+        return output
+```
+
