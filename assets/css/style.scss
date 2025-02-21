@@ -1,0 +1,53 @@
+---
+---
+
+@import "{{ site.theme }}";
+@import 'social-cricles.css';
+@import 'social-cricles.min.css';
+@import 'font-awesome.min.css';
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic');
+
+/* Default width for small and medium screens */
+.container {
+  width: 100%;
+}
+
+/* Adjust width for larger screens */
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 80%; /* Adjust this value according to your preference */
+  }
+}
+
+
+body {
+background-color: #29303d;
+color: white;
+font-family: Georgia;
+}
+h1 {
+color: #A8D5BA;
+}
+h2 {
+color: #e0e4eb;
+}
+h3 {
+color: #e0e4eb;
+}
+h4 {
+color: #F5F5DC;
+}
+h5 {
+color: #e0e4eb;
+}
+Strong {
+color: #A8D5BA;
+}
+a {
+color: #C5B4E3;
+}
+
+a:hover {
+color: #b4bbe3;
+font-weight: normal;
+}
