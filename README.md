@@ -48,6 +48,21 @@ class Solution:
 ***
 
 ***
+#### Given an integer array nums where every element appears three times except for one, which appears exactly once. Find the single element and return it. You must implement a solution with a linear runtime complexity and use only constant extra space.
+
+![Version](https://img.shields.io/badge/Bitwise-yellow)  
+```python
+class Solution:
+    def singleNumber(nums):
+        ones, twos = 0, 0
+        for num in nums:
+            ones = (ones ^ num) & ~twos  # XOR num into ones and clear bits present in twos
+            twos = (twos ^ num) & ~ones  # XOR num into twos and clear bits present in ones
+        return ones
+```
+
+
+***
 #### You are given an integer array nums. You are initially positioned at the array's first index, and each element in the array represents your maximum jump length at that position. Return true if you can reach the last index, or false otherwise.
 
 ![Version](https://img.shields.io/badge/Array-white)  
