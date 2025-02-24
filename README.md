@@ -83,6 +83,30 @@ class Solution:
                 tank = 0
         return start if total_tank >= 0 else -1
 ```
+***
+#### Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
+
+```python
+import numpy as np
+class Solution:
+    def maxSubarraySumCircular(self, nums: List[int]) -> int:
+        totalSum = 0
+        maxSum = float('-inf')
+        minSum = float('inf')
+        curMax = 0
+        curMin = 0
+
+        for v in nums:
+            totalSum += v
+            curMax = max(curMax+v, v)
+            maxSum = max(maxSum, curMax)
+
+            curMin = min(curMin+v, v)
+            minSum = min(minSum, curMin)
+
+        return maxSum if maxSum <= 0 else max(maxSum, totalSum - minSum)
+```
+
 
 ***
 ***
