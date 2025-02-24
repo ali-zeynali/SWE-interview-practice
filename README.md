@@ -7,6 +7,7 @@ Welcome to the SWE-Interview-Practice! This platform is dedicated to providing c
 ## **Easy Questions**
 &nbsp;
 
+
 ***
 #### Given a string s consisting of words and spaces, return the length of the last word in the string. A word is a maximal substring consisting of non-space characters only.
 
@@ -18,6 +19,24 @@ class Solution:
         if len(s) == 0:
             return 0
         return len(s.split(" ")[-1])
+```
+
+***
+#### given a list (lst), sort its objecs based on: if o1['v1'] < o2['v1'] -> o1 comes before o2. If o1['v1'] == o2['v1'] and o1['v2'] < o2['v2'] -> o1 comes before o2.
+
+![Version](https://img.shields.io/badge/Sort-gray)  
+```python
+class Solution:
+    def customizedSort(lst):
+        def myKey(o1, o2):
+            if o1['v1'] < o2['v1']:
+                return -1
+            if o1['v1'] > o2['v1']:
+                return 1
+            if o1['v2'] < o2['v2']:
+                return -1
+            return 1
+        return sorted(lst, key=cmp_to_key(myKey))
 ```
 
 ***
