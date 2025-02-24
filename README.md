@@ -146,6 +146,49 @@ class Solution:
 ```
 
 ***
+#### You are given two integer arrays nums1 and nums2 sorted in non-decreasing order and an integer k. Define a pair (u, v) which consists of one element from the first array and one element from the second array. Return the k pairs (u1, v1), (u2, v2), ..., (uk, vk) with the smallest sums.
+
+![Version](https://img.shields.io/badge/Heap-cyan)  
+```python
+import heapq
+import numpy as np
+class Solution:
+    def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
+        def getRan():
+            return np.random.random()*0.0001
+        visited = {}
+        heap = []
+        heapq.heappush(heap, (nums1[0]+nums2[0] + getRan(), [0, 0]))
+        visited[0] = set([])
+        visited[0].add(0) 
+        ans = []
+        n = len(nums1)
+        m = len(nums2)
+        # complexity: K * log(HEAP_SIZE) ~ K * log(K) 
+        while len(ans) < k:
+            (v, [i, j]) = heapq.heappop(heap)
+            ans.append([nums1[i] , nums2[j]])
+            # opt 1: moving i
+            if i < n - 1 and (i+1 not in visited or j not in visited[i+1]):
+                if i+1 not in visited:
+                    visited[i+1] = set([j])
+                else:
+                    visited[i+1].add(j)
+                val = nums1[i+1] + nums2[j] + getRan()
+                heapq.heappush(heap, (val, [i+1, j]))
+            # opt 2: moving j 
+            if j < m - 1 and (i not in visited or j+1 not in visited[i]):
+                if i not in visited:
+                    visited[i] = set([j+1])
+                else:
+                    visited[i].add(j+1)
+
+                val = nums1[i] + nums2[j+1] + getRan()
+                heapq.heappush(heap, (val, [i, j+1]))
+        return ans
+```
+
+***
 ***
 &nbsp;
 ## **Hard Questions**
