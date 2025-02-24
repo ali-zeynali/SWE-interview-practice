@@ -83,6 +83,7 @@ class Solution:
                 tank = 0
         return start if total_tank >= 0 else -1
 ```
+
 ***
 #### Given a circular integer array nums of length n, return the maximum possible sum of a non-empty subarray of nums.
 ![Version](https://img.shields.io/badge/SlidingWindow-purple)  
@@ -107,6 +108,42 @@ class Solution:
         return maxSum if maxSum <= 0 else max(maxSum, totalSum - minSum)
 ```
 
+***
+#### A peak element is an element that is strictly greater than its neighbors. Given a 0-indexed integer array nums, find a peak element, and return its index. If the array contains multiple peaks, return the index to any of the peaks. Answer in O(log(n))
+
+![Version](https://img.shields.io/badge/BinarySearch-green)  
+```python
+import numpy as np
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        if len(nums) <= 3:
+            return np.argmax(nums)
+        
+        left = 0
+        right = len(nums) - 1
+
+        if nums[left+1] < nums[left]:
+            return left
+        if nums[right - 1] < nums[right]:
+            return right
+        
+        mid = (left + right) // 2
+
+        if (mid == 0 or nums[mid-1] < nums[mid]) and (mid == right or nums[mid] > nums[mid+1]):
+            return mid
+        
+        if nums[mid] > max(nums[left], nums[right]):
+            if nums[mid-1] > nums[mid]:
+                return self.findPeakElement(nums[:mid+1])
+            else:
+                return self.findPeakElement(nums[mid:]) + mid
+                
+        else:
+            if nums[left] > nums[right]:
+                return self.findPeakElement(nums[:mid+1])
+            else:
+                return self.findPeakElement(nums[mid:]) + mid
+```
 
 ***
 ***
