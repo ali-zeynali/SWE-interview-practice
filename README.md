@@ -285,7 +285,7 @@ class Solution:
 
 ![Version](https://img.shields.io/badge/Array-white)  
 ```python
-lass Solution:
+class Solution:
     def candy(self, ratings: List[int]) -> int:
 
         n = len(ratings)
@@ -301,3 +301,37 @@ lass Solution:
         return sum(candies)
 ```
 
+***
+#### Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.
+
+![Version](https://img.shields.io/badge/SlidingWindow-purple)  
+```python
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        def get_left_areas(heights):
+            stack = []
+            areas = []
+            for i, h in enumerate(heights):
+                if not stack or h > stack[-1][1]:
+                    stack.append([i, h])
+                    areas.append(h)
+                else:
+                    while stack and stack[-1][1] >= h:
+                        stack.pop()
+                    if not stack:
+                        areas.append(h*(i+1))
+                    else:
+                        areas.append(h*(i-stack[-1][0]))
+                    stack.append([i, h])
+            return areas
+        if len(heights) == 0:
+            return 0
+        left = get_left_areas(heights)
+        right = get_left_areas(heights[::-1])[::-1]
+        max_area = 0
+        for i in range(len(heights)):
+            area = left[i] + right[i] - heights[i]
+            if area > max_area:
+                max_area = area
+        return max_area
+```
