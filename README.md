@@ -7,6 +7,24 @@ Welcome to the SWE-Interview-Practice! This platform is dedicated to providing c
 ## **Easy Questions**
 &nbsp;
 
+***
+#### Useful String functions
+
+![Version](https://img.shields.io/badge/String-blue)  
+# Useful Python String Functions
+
+| Function        | Description                            |
+|--------------- |--------------------------------|
+| `strip()`      | Removes leading/trailing spaces |
+| `lstrip()`     | Removes leading spaces          |
+| `rstrip()`     | Removes trailing spaces         |
+| `lower()`      | Converts string to lowercase    |
+| `upper()`      | Converts string to uppercase    |
+| `isdigit()`    | Checks if string contains only digits |
+| `isalpha()`    | Checks if string contains only letters |
+| `chr()`        | Converts an ASCII code to its character |
+| `ord()`        | Converts a character to its ASCII code |
+
 
 ***
 #### Given a string s consisting of words and spaces, return the length of the last word in the string. A word is a maximal substring consisting of non-space characters only.
