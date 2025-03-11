@@ -15,15 +15,15 @@ Welcome to the SWE-Interview-Practice! This platform is dedicated to providing c
 
 | Function        | Description                            |
 |--------------- |--------------------------------|
-| `strip()`      | Removes leading/trailing spaces |
-| `lstrip()`     | Removes leading spaces          |
-| `rstrip()`     | Removes trailing spaces         |
-| `lower()`      | Converts string to lowercase    |
-| `upper()`      | Converts string to uppercase    |
-| `isdigit()`    | Checks if string contains only digits |
-| `isalpha()`    | Checks if string contains only letters |
-| `chr()`        | Converts an ASCII code to its character |
-| `ord()`        | Converts a character to its ASCII code |
+| strip()      | Removes leading/trailing spaces |
+| lstrip()     | Removes leading spaces          |
+| rstrip()     | Removes trailing spaces         |
+| lower()      | Converts string to lowercase    |
+| upper()      | Converts string to uppercase    |
+| isdigit()    | Checks if string contains only digits |
+| isalpha()    | Checks if string contains only letters |
+| chr()        | Converts an ASCII code to its character |
+| ord()        | Converts a character to its ASCII code |
 
 
 ***
